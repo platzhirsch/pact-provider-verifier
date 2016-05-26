@@ -1,3 +1,5 @@
+version: 0.0.{build}
+
 cache:
   - vendor/bundle
 
@@ -10,12 +12,13 @@ install:
   - bundle config --local path vendor/bundle
   - bundle install
 
-build: off
-
 before_test:
   - ruby -v
   - gem -v
   - bundle -v
 
-test_script:
+build_script:
   - bundle exec rake package
+
+test_script:
+  - bundle exec rake -T
